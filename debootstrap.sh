@@ -189,7 +189,7 @@ mountpoint /mnt/dev -q
 if [ "$?" -eq 0 ]; then
         echo -e "${RED}Something is already mounted at /mnt/dev"
         echo -e "${CYAN}SKIPPING...${NC}"
-else      
+else
         sudo mount --bind /dev /mnt/dev
         echo -e "$DONE"
 fi
@@ -208,7 +208,7 @@ echo 'CP installation script to /mnt'
 sudo cp ./install.sh /mnt
 echo -e "$DONE"
 echo
-echo -e "${GREEN}Environment is ready to use${NC}"
+echo -e "${CYAN}Environment is ready to use${NC}"
 echo
 echo 'TO CHROOT:'
 echo 'sudo chroot /mnt'
