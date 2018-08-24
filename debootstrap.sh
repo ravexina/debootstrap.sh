@@ -126,7 +126,7 @@ then
 		echo -e "${GREEN}$SRC${NC} is already mounted at /mnt"
 		echo -e "${CYAN}Continue...${NC}"
 	else
-		echo -e "${RED}$SRC is mounted at /mnt${NC}"
+		echo -e "${RED}$SRC${NC} is mounted at /mnt"
 		echo -e "${LRED}Breaking the script.${NC}"
 		exit 1
 	fi
