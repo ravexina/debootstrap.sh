@@ -196,6 +196,14 @@ else
         echo -e "$DONE"
 fi
 
+if mountpoint -q /mnt/dev/pts; then
+        echo -e "${RED}Something is already mounted at /mnt/dev/pts"
+        echo -e "${CYAN}SKIPPING...${NC}"
+else
+        sudo mount --bind /dev/pts /mnt/dev/pts
+        echo -e "$DONE"
+fi
+
 #sudo mount --bind /dev/pts /mnt/dev/pts
 # For LVM
 #sudo mount --bind /run /mnt/run
