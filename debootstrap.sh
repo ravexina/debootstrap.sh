@@ -185,8 +185,10 @@ echo
 
 # Mount necessary paths to chroot
 echo 'Bind necessary paths'
-mountpoint /mnt/dev -q 
-if [ "$?" -eq 0 ]; then
+
+# TODO
+# Change it to a loop of mountpoint lists
+if mountpoint -q /mnt/dev; then
         echo -e "${RED}Something is already mounted at /mnt/dev"
         echo -e "${CYAN}SKIPPING...${NC}"
 else
