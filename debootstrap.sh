@@ -117,24 +117,23 @@ echo
 echo 'Mounting the root partition'
 
 # Check if somthing is mounted at /mnt
-mountpoint /mnt &> /dev/null
-
-if [ "$?" -eq 1 ]; then
-	# Nothing is mounted there
-	sudo mount "$ROOT" /mnt
-	echo -e "$DONE"
-else
+if mountpoint -q /mnt;
+then
 	# Check what it is
 	SRC=$(df /mnt --output=source | sed -n 2p)
 
 	if [ "$SRC" == "$ROOT" ]; then
-		echo "$SRC is already mounted at /mnt"
-		echo "Continue..."
+		echo -e "${GREEN}$SRC${NC} is already mounted at /mnt"
+		echo -e "${CYAN}Continue...${NC}"
 	else
-		echo "$SRC is mounted at /mnt"
-		echo "Breaking the script."
+		echo -e "${RED}$SRC is mounted at /mnt${NC}"
+		echo -e "${LRED}Breaking the script.${NC}"
 		exit 1
 	fi
+else
+	# Nothing is mounted there
+	sudo mount "$ROOT" /mnt
+	echo -e "$DONE"
 fi
 
 echo
